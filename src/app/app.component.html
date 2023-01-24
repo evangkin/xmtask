@@ -9,8 +9,8 @@
 
 <header class="container">
   <div class="vertical-center">
-    <button (click)="navigate('photos')" class="options" mat-raised-button color="primary">Photos</button>
-    <button (click)="navigate('favorites')" class="options" mat-raised-button color="primary" >Favorites</button>  
+    <button  [routerLink]="['']" routerLinkActive="active" class="options" mat-raised-button color="primary">Photos</button>
+    <button [routerLink]="['favorites']" routerLinkActive="active" class="options" mat-raised-button color="primary">Favorites</button>  
   </div>
 </header>
 

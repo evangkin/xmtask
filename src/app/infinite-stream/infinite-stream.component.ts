@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { PhotosService } from '../photos.service';
+
 
 @Component({
   selector: 'app-infinite-stream',
@@ -7,12 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfiniteStreamComponent implements OnInit {
 
-  constructor() {
+  photoBucket: Array<SafeUrl> = [];
+  initial: number = 6;
+
+  constructor(private photoService: PhotosService, private sanitizer: DomSanitizer) {
 
   }
 
   ngOnInit(): void {
     console.log('loaded /');
+
+    this.photoService.loadPhotos(this.initial);
+    this.photoBucket = this.photoService.photoBucket;
   }
+
+  addToFavorites(index: number) {
+    console.log('save index: ' + index);
+  }
+
 
 }

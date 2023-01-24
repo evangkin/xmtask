@@ -1,1 +1,7 @@
-<p>infinite-stream works!</p>
+<div *ngIf="photoBucket">
+    <mat-grid-list cols="3" rowHeight="2:2">
+        <mat-grid-tile *ngFor="let item of photoBucket; let i = index">
+            <img (click)="addToFavorites(i)" class="mgt" [src]="item" />
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

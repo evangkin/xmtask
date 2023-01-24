@@ -8,16 +8,4 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'photobucket';
-
-  constructor(private router: Router) {
-
-  }
-
-  navigate(path: string) {
-    if (path === 'photos') {
-      this.router.navigate(['/']);
-    } else if (path === 'favorites') {
-      this.router.navigate(['favorites']);
-    }
-  }
 }
