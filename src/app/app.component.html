@@ -1,16 +1,9 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <header class="container">
   <div class="vertical-center">
-    <button  [routerLink]="['']" routerLinkActive="active" class="options" mat-raised-button color="primary">Photos</button>
-    <button [routerLink]="['favorites']" routerLinkActive="active" class="options" mat-raised-button color="primary">Favorites</button>  
+    <button (click)="highlight('main')"  [routerLink]="['']" class="options" 
+    mat-raised-button [ngStyle]="route==='main_bucket' ? {'background': '#283593'} : {}">Photos</button>
+    <button (click)="highlight('favorites')" [routerLink]="['favorites']" class="options" 
+    mat-raised-button [ngStyle]="route==='favorites' ? {'background': '#283593'} : {}">Favorites</button>  
   </div>
 </header>
 
