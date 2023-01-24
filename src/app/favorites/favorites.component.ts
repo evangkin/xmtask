@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { PhotosService } from '../photos.service';
 
 @Component({
@@ -11,18 +12,20 @@ export class FavoritesComponent {
 
   favoritesBucket: Array<SafeUrl> = [];
 
-  constructor(private sanitizer: DomSanitizer, private photosService: PhotosService) {}
+  constructor(private sanitizer: DomSanitizer, private photosService: PhotosService,
+              private router: Router) {}
 
   ngOnInit(): void {
-      var savedBucket = localStorage.getItem('savedBucket') || "[]";
-      var parsed = JSON.parse(savedBucket) as Array<SafeUrl>;
+      const savedBucket = localStorage.getItem('savedBucket') || "[]";
+      /*let parsed = JSON.parse(savedBucket) as Array<SafeUrl>;
       for (let i = 0; i < parsed.length; i++) {
-        this.favoritesBucket.push(parsed[i]);
-      } // figure this out
+        
+      }*/
+      this.favoritesBucket = this.photosService.favoritesBucket;
   }
 
   viewPhoto(index: number) {
-    console.log('viewing: ' + index);
+    this.router.navigate(['photos/' + index]);
   }
 
 }

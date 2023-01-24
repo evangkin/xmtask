@@ -1,1 +1,8 @@
-<p>single-photo works!</p>
+<div class="imgContainer">
+    <div>
+        <img class="fullImage" [src]="url" />
+    </div>
+    <div>
+        <button (click)="removeFromFavorites()" mat-raised-button color="warn">Remove From Favorites</button>
+    </div>
+</div>
