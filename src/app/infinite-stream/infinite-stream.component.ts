@@ -12,7 +12,6 @@ import { HostListener } from '@angular/core';
 export class InfiniteStreamComponent implements OnInit {
 
   photoBucket: Array<SafeUrl> = [];
-  initial: number = 6;
   dataLoading: Boolean = false;
 
   constructor(private photoService: PhotosService) {
@@ -20,8 +19,6 @@ export class InfiniteStreamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('loaded /');
-
     this.photoService.loadPhotosInit().then(() => {
       this.photoBucket = this.photoService.photoBucket;
     });

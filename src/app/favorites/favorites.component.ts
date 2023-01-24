@@ -12,16 +12,17 @@ export class FavoritesComponent {
 
   favoritesBucket: Array<SafeUrl> = [];
 
-  constructor(private sanitizer: DomSanitizer, private photosService: PhotosService,
-              private router: Router) {}
+  constructor(private photosService: PhotosService, private router: Router, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
       const savedBucket = localStorage.getItem('savedBucket') || "[]";
-      /*let parsed = JSON.parse(savedBucket) as Array<SafeUrl>;
+      let parsed = JSON.parse(savedBucket);
       for (let i = 0; i < parsed.length; i++) {
-        
-      }*/
-      this.favoritesBucket = this.photosService.favoritesBucket;
+        const impl = parsed[i]['changingThisBreaksApplicationSecurity'];
+        let image = this.sanitizer.bypassSecurityTrustUrl(impl);
+        this.favoritesBucket.push(image);
+      }
+      this.photosService.favoritesBucket = this.favoritesBucket;
   }
 
   viewPhoto(index: number) {

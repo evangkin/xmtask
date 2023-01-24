@@ -24,6 +24,7 @@ export class SinglePhotoComponent {
 
   removeFromFavorites() {
     this.photosService.favoritesBucket.splice(this.imageId, 1);
+    localStorage.setItem('savedBucket', JSON.stringify(this.photosService.favoritesBucket));
     this.router.navigate(['favorites']);
   }
 
