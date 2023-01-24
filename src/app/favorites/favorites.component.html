@@ -1,1 +1,7 @@
-<p>favorites works!</p>
+<div *ngIf="favoritesBucket">
+    <mat-grid-list cols="3" rowHeight="2:2">
+        <mat-grid-tile *ngFor="let item of favoritesBucket; let i = index">
+            <img (click)="viewPhoto(i)" class="mgt" [src]="item" />
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

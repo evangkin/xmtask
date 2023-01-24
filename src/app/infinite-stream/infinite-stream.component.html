@@ -4,4 +4,7 @@
             <img (click)="addToFavorites(i)" class="mgt" [src]="item" />
         </mat-grid-tile>
     </mat-grid-list>
+    <div *ngIf="dataLoading" class="loading">
+        <mat-spinner></mat-spinner>
+    </div>
 </div>

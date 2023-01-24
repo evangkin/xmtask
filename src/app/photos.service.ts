@@ -1,4 +1,4 @@
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
@@ -10,18 +10,28 @@ export class PhotosService {
 
   url: string = `https://picsum.photos/200/300`;
   photoBucket: Array<SafeUrl> = [];
+  favoritesBucket: Array<SafeUrl> = [];
+  initial: number = 6;
 
   constructor(private httpClient: HttpClient, private sanitizer: DomSanitizer) { }
 
-  loadPhotos(initial: number) {
+  async loadPhotosInit() {
     this.photoBucket = new Array<SafeUrl>();
-    for (let i = 0; i < initial; i++) {
+    this.addPhotos();
+  }
+
+  addPhotos() {
+    for (let i = 0; i < this.initial; i++) {
       this.getPic().subscribe(pic => {
-        let objectURL = URL.createObjectURL(pic);       
+        let objectURL = URL.createObjectURL(pic);
         let image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
         this.photoBucket.push(image);
       });
     }
+  }
+
+  async loadMorePhotos() {
+    this.addPhotos();
   }
 
   getPic(): Observable<any> {
