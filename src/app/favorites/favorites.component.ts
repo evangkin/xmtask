@@ -16,10 +16,10 @@ export class FavoritesComponent {
 
   ngOnInit(): void {
       const savedBucket = localStorage.getItem('savedBucket') || "[]";
-      let parsed = JSON.parse(savedBucket);
+      const parsed = JSON.parse(savedBucket);
       for (let i = 0; i < parsed.length; i++) {
         const impl = parsed[i]['changingThisBreaksApplicationSecurity'];
-        let image = this.sanitizer.bypassSecurityTrustUrl(impl);
+        const image = this.sanitizer.bypassSecurityTrustUrl(impl);
         this.favoritesBucket.push(image);
       }
       this.photosService.favoritesBucket = this.favoritesBucket;
