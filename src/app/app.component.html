@@ -1,0 +1,19 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<header class="container">
+  <div class="vertical-center">
+    <button (click)="navigate('photos')" class="options" mat-raised-button color="primary">Photos</button>
+    <button (click)="navigate('favorites')" class="options" mat-raised-button color="primary" >Favorites</button>  
+  </div>
+</header>
+
+<body>
+  <router-outlet></router-outlet>
+</body>
